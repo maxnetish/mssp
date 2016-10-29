@@ -1,0 +1,42 @@
+doctype html
+html
+    head
+        meta(charset='UTF-8')
+        link(
+        rel='stylesheet',
+        href=pageCssSrc
+        )
+        link(
+        href='//fonts.googleapis.com/css?family=Fira+Sans&subset=latin,cyrillic',
+        rel='stylesheet'
+        )
+        title #{pageTitle}
+    body
+        div.main-wrapper
+            header.page-header
+                div.header-internal.clear
+                    div.pane.left
+                        div.header-titles
+                            h1.header-title #{headerTitle}
+                            p.header-subtitle #{headerSubtitle}
+                    div.pane.right
+                        div.header-img-wrapper
+            div.clear.page-content
+                div.clear.content-internal
+                    section.main-content
+                        each articleModel in articles
+                            article
+                                h3 #{articleModel.title}
+                                div!= articleModel.content
+                    aside.sidebar
+                        div.sidebar-content
+                            ul.unstyled
+                                each sideBarItem in sideBarItems
+                                    li.sidebar-listitem
+                                        h5 #{sideBarItem.title}
+                                        div!= sideBarItem.content
+            footer
+        script(src=vendorJsSrc)
+        script(src=webappJsSrc)
+
+
