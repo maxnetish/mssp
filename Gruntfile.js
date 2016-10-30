@@ -72,7 +72,7 @@ module.exports = function (grunt) {
                         filter: 'isFile',
                         flatten: false,
                         cwd: srcDir + '/',
-                        src: ['**/*.jade'],
+                        src: ['*.jade'],
                         dest: buildDir,
                         ext: '.html'
                     }

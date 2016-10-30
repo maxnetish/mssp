@@ -35,14 +35,15 @@ html
                                 div!= articleModel.content
                     aside.sidebar
                         div.sidebar-content
-                            div
-                                i.icon-github
-                                span Гитхаб
                             ul.unstyled
-                                each sideBarItem in sideBarItems
-                                    li.sidebar-listitem
-                                        h5 #{sideBarItem.title}
-                                        div!= sideBarItem.content
+                                li.sidebar-listitem
+                                    h5 #{social.title}
+                                    ul.unstyled
+                                        each soc in social.items
+                                            li.soc-ct
+                                                a.soc-link(href=soc.href,target='_blank')
+                                                    i(class=soc.icon)
+                                                    span #{soc.label}
             footer.clear.body-row.page-footer
         script(src=vendorJsSrc)
         script(src=webappJsSrc)
