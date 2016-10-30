@@ -1,11 +1,10 @@
-@import "npm://bootstrap/less/normalize";
+@import 'npm://bootstrap/less/normalize';
 
 @mssp_base_font: 'Fira Sans', sans-serif;
 
 @mssp_wpoint-1: 600px;
 @mssp_wpoint-2: 1000px;
-@mssp_base_bg_color: wheat;
-@mssp_header_min_height: 60px;
+@mssp_base_bg_color: #ffdead;
 
 @mssp_header_img_w: 180px;
 @mssp_header_img_h: 160px;
@@ -13,8 +12,15 @@
 
 @mssp_sidebar_w: 320px;
 
-@mssp_header_bg_color: darken(@mssp_base_bg_color, 33%);
+@mssp_body_bg_color: lighten(@mssp_base_bg_color, 10%);
+@mssp_body_text_color: contrast(@mssp_body_bg_color, #101010, #dddddd);
+@mssp_header_bg_color: @mssp_base_bg_color;
 @mssp_header_title_text_color: contrast(@mssp_header_bg_color, #101010, #dddddd);
+@mssp_aside_bg_color: lighten(@mssp_base_bg_color, 5%);
+@mssp_aside_text_color: contrast(@mssp_aside_bg_color, #101010, #dddddd);
+
+@mssp_anchor_text_color: coral;
+
 
 html {
   overflow-x: hidden;
@@ -22,11 +28,28 @@ html {
 
 body {
   font-family: @mssp_base_font;
+  background-color: @mssp_body_bg_color;
+  color: @mssp_body_text_color;
+}
+
+.body-row {
+  width: 100%;
+}
+
+.body-row-content {
+  margin: auto;
+
+  @media only screen and (max-width: @mssp_wpoint-2), only screen and (max-device-width: @mssp_wpoint-2) {
+    width: 100%;
+    min-width: inherit;
+  }
+  width: 80%;
+  max-width: 1500px;
+  min-width: @mssp_wpoint-2;
 }
 
 .main-wrapper {
-  min-height: 100vh;
-  background-color: @mssp_base_bg_color;
+  width: 100%;
 }
 
 .clear:after {
@@ -46,87 +69,60 @@ ul.unstyled {
 
 .header-subtitle {
   color: lighten(@mssp_header_title_text_color, 33%);
+  font-size: large;
 }
 
-header.page-header {
-  width: 100%;
+.page-header {
   background-color: @mssp_header_bg_color;
-  min-height: @mssp_header_min_height;
 
-  .header-internal {
-    margin: auto;
-
-    @media (max-width: @mssp_wpoint-2) {
-      width: 100%;
-      min-width: inherit;
+  .pane {
+    @media only screen and (max-width: @mssp_wpoint-1), only screen and (max-device-width: @mssp_wpoint-1) {
+      float: none;
     }
-    width: 80%;
-    max-width: 1500px;
-    min-width: @mssp_wpoint-2;
+    float: left;
 
-    .header-titles {
-      padding: @mssp_base_margin;
+    &.left {
+      @media only screen and (max-width: @mssp_wpoint-1), only screen and (max-device-width: @mssp_wpoint-1) {
+        width: 100%;
+      }
+      width: calc(~"100% - "(@mssp_header_img_w + 2 * @mssp_base_margin));
     }
-
-    .pane{
-      min-height: @mssp_header_min_height;
-
-      @media (max-width: @mssp_wpoint-1) {
-        float: none;
+    &.right {
+      @media only screen and (max-width: @mssp_wpoint-1), only screen and (max-device-width: @mssp_wpoint-1) {
+        width: 100%;
       }
-      float: left;
-
-      &.left {
-        @media (max-width: @mssp_wpoint-1) {
-          width: 100%;
-        }
-        width: calc(~"100% - "(@mssp_header_img_w + 2 * @mssp_base_margin));
-      }
-      &.right {
-        @media (max-width: @mssp_wpoint-1) {
-          width: 100%;
-        }
-        width: @mssp_header_img_w + 2 * @mssp_base_margin;
-      }
+      width: @mssp_header_img_w + 2 * @mssp_base_margin;
     }
-
-
   }
 }
 
+.header-titles-ct {
+  padding: @mssp_base_margin;
+}
+
 .page-content {
-  .content-internal {
-    margin: auto;
 
-    @media (max-width: @mssp_wpoint-2) {
+  .sidebar {
+    background-color: @mssp_aside_bg_color;
+    color: @mssp_aside_text_color;
+
+    @media only screen and (max-width: @mssp_wpoint-1), only screen and (max-device-width: @mssp_wpoint-1) {
+      float: none;
       width: 100%;
-      min-width: inherit;
     }
-    width: 80%;
-    max-width: 1500px;
-    min-width: @mssp_wpoint-2;
+    float: left;
+    //width: @mssp_sidebar_w + 2 * @mssp_base_margin;
+    width: 36%;
+  }
 
-    .sidebar {
-      background-color: darken(@mssp_base_bg_color, 16.6%);
-
-      @media (max-width: @mssp_wpoint-1) {
-        float: none;
-        width: 100%;
-      }
-      float: left;
-      //width: @mssp_sidebar_w + 2 * @mssp_base_margin;
-      width: 36%;
+  .main-content {
+    @media only screen and (max-width: @mssp_wpoint-1), only screen and (max-device-width: @mssp_wpoint-1) {
+      float: none;
+      width: 100%;
     }
-
-    .main-content {
-      @media (max-width: @mssp_wpoint-1) {
-        float: none;
-        width: 100%;
-      }
-      float: left;
-      //width: calc(~"100% - "(@mssp_sidebar_w + 2 * @mssp_base_margin));
-      width: 64%;
-    }
+    float: left;
+    //width: calc(~"100% - "(@mssp_sidebar_w + 2 * @mssp_base_margin));
+    width: 64%;
   }
 }
 
@@ -150,4 +146,28 @@ header.page-header {
   width: @mssp_header_img_w;
   height: @mssp_header_img_h;
   margin: @mssp_base_margin auto;
+  .heeader-img {
+    width: @mssp_header_img_w;
+    height: @mssp_header_img_h;
+  }
 }
+
+a {
+  color: @mssp_anchor_text_color;
+  transition: color 0.5s ease 0s, background-color 0.5s ease 0s;
+
+  &:visited {
+    color: @mssp_anchor_text_color;
+  }
+
+  &:hover, &:active {
+    color: contrast(@mssp_anchor_text_color, #101010, #dddddd);
+    background-color: @mssp_anchor_text_color;
+  }
+
+  &:focus {
+    outline: dotted 1px @mssp_anchor_text_color;
+  }
+
+}
+

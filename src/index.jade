@@ -13,16 +13,21 @@ html
         title #{pageTitle}
     body
         div.main-wrapper
-            header.page-header
-                div.header-internal.clear
+            header.body-row.page-header
+                div.body-row-content.clear
                     div.pane.left
-                        div.header-titles
+                        div.header-titles-ct
                             h1.header-title #{headerTitle}
                             p.header-subtitle #{headerSubtitle}
                     div.pane.right
                         div.header-img-wrapper
-            div.clear.page-content
-                div.clear.content-internal
+                            img.header-img(
+                            src=headerImage.src,
+                            alt='Lion of Saint Mark',
+                            srcset=headerImage.srcSet
+                            )
+            div.clear.body-row.page-content
+                div.clear.body-row-content
                     section.main-content
                         each articleModel in articles
                             article
@@ -30,12 +35,15 @@ html
                                 div!= articleModel.content
                     aside.sidebar
                         div.sidebar-content
+                            div
+                                i.icon-github
+                                span Гитхаб
                             ul.unstyled
                                 each sideBarItem in sideBarItems
                                     li.sidebar-listitem
                                         h5 #{sideBarItem.title}
                                         div!= sideBarItem.content
-            footer
+            footer.clear.body-row.page-footer
         script(src=vendorJsSrc)
         script(src=webappJsSrc)
 

@@ -1,11 +1,10 @@
-
 module.exports = function (grunt) {
 
     var preBuildDir = 'prebuild';
     var buildDir = 'build';
     var srcDir = 'src';
     var webpack = require('webpack');
-    var webpackCommonOptions =  require('./webpack.config.js');
+    var webpackCommonOptions = require('./webpack.config.js');
     var path = require('path');
 
     require('time-grunt')(grunt);
@@ -21,14 +20,40 @@ module.exports = function (grunt) {
 
         copy: {
             html2Build: {
-                files: [{
-                    expand: true,
-                    filter: 'isFile',
-                    flatten: false,
-                    cwd: srcDir + '/',
-                    src: ['**/*.html*'],
-                    dest: buildDir
-                }]
+                files: [
+                    {
+                        expand: true,
+                        filter: 'isFile',
+                        flatten: false,
+                        cwd: srcDir + '/',
+                        src: ['**/*.html*'],
+                        dest: buildDir
+                    }
+                ]
+            },
+            img2Build: {
+                files: [
+                    {
+                        expand: true,
+                        filter: 'isFile',
+                        flatten: true,
+                        cwd: srcDir + '/static-images',
+                        src: ['**/*.png', '**/*.jpg'],
+                        dest: buildDir + '/assets/img'
+                    }
+                ]
+            },
+            fonts2Build: {
+                files: [
+                    {
+                        expand: true,
+                        filter: 'isFile',
+                        flatten: true,
+                        cwd: srcDir + '/fonts',
+                        src: ['**/*.eot', '**/*.svg', '**/*.ttf', '**/*.woff'],
+                        dest: buildDir + '/assets/css'
+                    }
+                ]
             }
         },
 
@@ -36,7 +61,7 @@ module.exports = function (grunt) {
             dev: {
                 options: {
                     pretty: true,
-                    data: function(dest, src) {
+                    data: function (dest, src) {
                         // Return an object of data to pass to templates
                         return require('./' + srcDir + '/html-data.json');
                     }
@@ -160,7 +185,7 @@ module.exports = function (grunt) {
         //     }
         // }
 
-    //     delta: {
+        //     delta: {
         //         options: {
         //             livereload: false
         //         },
@@ -187,7 +212,7 @@ module.exports = function (grunt) {
         //         //     tasks: ['less:admin', 'less:public']
         //         // }
         //     }
-        });
+    });
 
     /**
      * In order to make it safe to just compile or copy *only* what was changed,
@@ -198,6 +223,6 @@ module.exports = function (grunt) {
      */
     // grunt.renameTask('watch', 'delta');
 
-    grunt.registerTask('dev', ['clean', 'jade:dev', 'less:dev', 'babel:dev', 'webpack:dev']);
-    grunt.registerTask('prod', ['clean', 'jade:dev', 'less:prod', 'babel:prod', 'webpack:prod']);
+    grunt.registerTask('dev', ['clean', 'jade:dev', 'copy:img2Build', 'copy:fonts2Build', 'less:dev', 'babel:dev', 'webpack:dev']);
+    grunt.registerTask('prod', ['clean', 'jade:dev', 'copy:img2Build', 'copy:fonts2Build', 'less:prod', 'babel:prod', 'webpack:prod']);
 };
