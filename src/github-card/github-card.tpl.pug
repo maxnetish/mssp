@@ -1,0 +1,26 @@
+div.github-card-ct
+    div.github-card-row
+        div.github-card-item.github-card-avatar.avatar
+            a(href=user.html_url)
+                img(src=user.avatar_url)
+        div.github-card-item.github-card-name-bio
+            div.github-card-name
+                a(href=user.html_url)
+                    span.github-card-user-name #{user.name}
+            div.github-card-bio
+                span.github-card-user-bio #{user.bio}
+    strong Recently updated repos
+    div.github-card-row.github-card-row-repos
+        each repo in repos
+            div.github-card-item.github-card-repo
+                div.github-card-repo-name
+                    a(href=repo.url)
+                        span #{repo.name}
+                div.github-card-repo-description
+                    span #{repo.description}
+                div.github-card-repo-lang
+                    span #{repo.language}
+                div.github-card-repo-pushed
+                    date(datetime=repo.pushed_at) #{(new Date(repo.pushed_at)).toLocaleDateString()}
+
+

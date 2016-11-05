@@ -24,9 +24,24 @@
     "title": "Профили в разных местах",
     "items": [
       {
-        "icon": "icon-github",
-        "href": "https://github.com/maxnetish",
-        "label": "Гитхаб с полезным и безполезным кодом"
+        "icon": "icon-twitter",
+        "href": "https://twitter.com/maxnetish",
+        "label": "Твиттер, когда не&#769;кому писа&#769;ть"
+      },
+      {
+        "icon": "icon-facebook2",
+        "href": "https://www.facebook.com/maksim.gordeev",
+        "label": "В фейсбук заглядываю иногда"
+      },
+      {
+        "icon": "icon-google2",
+        "href": "https://plus.google.com/+MaksimGordeev",
+        "label": "Гуглоплюс на любителя"
+      },
+      {
+        "icon": "icon-vk",
+        "href": "https://vk.com/id44057134",
+        "label": "Особо популярно в этой стране"
       }
     ]
   }

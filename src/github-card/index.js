@@ -1,4 +1,7 @@
-const cardTemplate = require('./github-card.tpl.html');
+const cardTemplate = require('./github-card.tpl.pug');
+const URI = require('urijs');
+
+var viewModel = {};
 
 fetch('https://api.github.com/users/maxnetish', {
     method: 'GET',
@@ -6,18 +9,36 @@ fetch('https://api.github.com/users/maxnetish', {
     headers: {},
     credentials: 'omit' // or same-origin or include
 })
-    .then(function (response) {
-        console.info('response: ', response);
-        return response.json();
+    .then(function (userResponse) {
+        return userResponse.json();
     })
-    .then(function (response) {
-        console.info('response.json(): ', response);
-
-        let cardHtml = cardTemplate(response);
-        let elm = document.getElementById('github-card');
-        elm.innerHTML = cardHtml;
-
-        return response;
+    .then(function (userParsedresponse) {
+        viewModel.user = userParsedresponse;
+        let nextUri = URI(userParsedresponse.repos_url).addQuery({
+            page: 1,
+            per_page: 5,
+            type: 'all',
+            sort: 'pushed'
+        });
+        return fetch(nextUri, {
+            method: 'GET',
+            body: null,
+            headers: {},
+            credentials: 'omit' // or same-origin or include
+        });
+    })
+    .then(function (reposResponse) {
+        return reposResponse.json();
+    })
+    .then(function (reposParsedResonse) {
+        viewModel.repos = reposParsedResonse;
+        return viewModel
+    })
+    .then(function (viewModelReposnse) {
+        let html = cardTemplate(viewModelReposnse);
+        let elm = document.getElementById('github-card')
+        elm.innerHTML = html;
+        return viewModelReposnse;
     })
     .catch(function (err) {
         console.warn(err);

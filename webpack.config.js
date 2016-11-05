@@ -7,7 +7,7 @@ module.exports = {
     cache: true,
     entry: {
         webapp: './' + preBuildDir + '/client.js',
-        vendor: ['core-js/es6/promise', 'whatwg-fetch']
+        vendor: ['core-js/es6/promise', 'whatwg-fetch', 'pug-runtime', 'urijs']
         // jquery: "./app/jquery",
         // bootstrap: ["!bootstrap-webpack!./app/bootstrap/bootstrap.config.js", "./app/bootstrap"],
         // react: "./app/react"
@@ -31,6 +31,10 @@ module.exports = {
             {
                 test: /(\.tpl.html)$/,
                 loader: 'lodash-template-webpack',
+            },
+            {
+                test: /(\.tpl.jade|\.tpl.pug)$/,
+                loader: 'pug-loader?compileDebug=false&prettyr=false'
             }
 
             // // required to write "require('./style.css')"

@@ -62,14 +62,14 @@ module.exports = function (grunt) {
                         filter: 'isFile',
                         flatten: false,
                         cwd: srcDir + '/',
-                        src: ['**/*.tpl.html*'],
+                        src: ['**/*.tpl.html*', '**/*.tpl.jade', '**/*.tpl.pug'],
                         dest: preBuildDir
                     }
                 ]
             }
         },
 
-        jade: {
+        pug: {
             dev: {
                 options: {
                     pretty: true,
@@ -84,7 +84,7 @@ module.exports = function (grunt) {
                         filter: 'isFile',
                         flatten: false,
                         cwd: srcDir + '/',
-                        src: ['*.jade'],
+                        src: ['*.jade', '*.pug'],
                         dest: buildDir,
                         ext: '.html'
                     }
@@ -158,7 +158,7 @@ module.exports = function (grunt) {
         less: {
             dev: {
                 files: [{
-                    src: 'src/**/*.less',
+                    src: 'src/main.less',
                     dest: buildDir + '/assets/css/bundle.css'
                 }],
                 options: {
@@ -171,7 +171,7 @@ module.exports = function (grunt) {
             },
             prod: {
                 files: [{
-                    src: 'src/**/*.less',
+                    src: 'src/main.less',
                     dest: buildDir + '/assets/css/bundle.css'
                 }],
                 options: {
@@ -235,6 +235,6 @@ module.exports = function (grunt) {
      */
     // grunt.renameTask('watch', 'delta');
 
-    grunt.registerTask('dev', ['clean', 'jade:dev', 'copy:img2Build', 'copy:fonts2Build', 'less:dev', 'babel:dev', 'copy:templates2Prebuild', 'webpack:dev']);
-    grunt.registerTask('prod', ['clean', 'jade:dev', 'copy:img2Build', 'copy:fonts2Build', 'less:prod', 'babel:prod', 'copy:templates2Prebuild', 'webpack:prod']);
+    grunt.registerTask('dev', ['clean', 'pug:dev', 'copy:img2Build', 'copy:fonts2Build', 'less:dev', 'babel:dev', 'copy:templates2Prebuild', 'webpack:dev']);
+    grunt.registerTask('prod', ['clean', 'pug:dev', 'copy:img2Build', 'copy:fonts2Build', 'less:prod', 'babel:prod', 'copy:templates2Prebuild', 'webpack:prod']);
 };

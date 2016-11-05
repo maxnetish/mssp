@@ -1,0 +1,59 @@
+@import '../main-variables';
+
+.github-card-ct {
+
+  .github-card-row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    align-content: flex-start;
+
+    &.github-card-row-repos {
+      flex-wrap: wrap;
+      justify-content: flex-start;
+
+      .github-card-item {
+        border: @mssp_anchor_text_color solid 1px;
+        padding: @mssp_base_margin / 2;
+
+        .github-card-repo-lang, .github-card-repo-pushed {
+          font-size: small;
+          font-style: italic;
+        }
+
+        .github-card-repo-pushed:before {
+          content: 'Updated ';
+        }
+
+        .github-card-repo-lang:before {
+          content: 'Language: ';
+        }
+      }
+    }
+  }
+
+  .github-card-item {
+    align-self: stretch;
+    margin: 0 5px 5px 0;
+    &.github-card-name-bio {
+      width: 100%;
+    }
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  .github-card-avatar {
+
+    img {
+      width: 50px;
+    }
+  }
+
+  .github-card-name-bio {
+
+  }
+
+}
