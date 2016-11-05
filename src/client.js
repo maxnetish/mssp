@@ -1,3 +1,5 @@
-const $ = require('jquery');
+const PromisePolyfill = require('core-js/es6/promise');
+const FetchPolyfill = require('whatwg-fetch');
 
-$('#foo').append(`Hello here. jquery up. Now is ${new Date()}`);
+require('./github-card');
+

@@ -7,7 +7,7 @@ module.exports = {
     cache: true,
     entry: {
         webapp: './' + preBuildDir + '/client.js',
-        vendor: ['jquery']
+        vendor: ['core-js/es6/promise', 'whatwg-fetch']
         // jquery: "./app/jquery",
         // bootstrap: ["!bootstrap-webpack!./app/bootstrap/bootstrap.config.js", "./app/bootstrap"],
         // react: "./app/react"
@@ -28,6 +28,11 @@ module.exports = {
     ],
     module: {
         loaders: [
+            {
+                test: /(\.tpl.html)$/,
+                loader: 'lodash-template-webpack',
+            }
+
             // // required to write "require('./style.css')"
             // { test: /\.css$/,    loader: "style-loader!css-loader" },
             //
@@ -41,6 +46,12 @@ module.exports = {
             // { test: /\.js$/,    loader: "jsx-loader" },
             // { test: /\.jsx$/,   loader: "jsx-loader?insertPragma=React.DOM" },
         ]
+    },
+    lodashTemplateLoader: {
+        // optional configuration...
+        globalLodash: false,
+        templateEscape: false
+        // engine: 'lodash/template'
     }
     /*,
      resolve: {

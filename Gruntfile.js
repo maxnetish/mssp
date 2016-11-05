@@ -54,6 +54,18 @@ module.exports = function (grunt) {
                         dest: buildDir + '/assets/css'
                     }
                 ]
+            },
+            templates2Prebuild: {
+                files: [
+                    {
+                        expand: true,
+                        filter: 'isFile',
+                        flatten: false,
+                        cwd: srcDir + '/',
+                        src: ['**/*.tpl.html*'],
+                        dest: preBuildDir
+                    }
+                ]
             }
         },
 
@@ -223,6 +235,6 @@ module.exports = function (grunt) {
      */
     // grunt.renameTask('watch', 'delta');
 
-    grunt.registerTask('dev', ['clean', 'jade:dev', 'copy:img2Build', 'copy:fonts2Build', 'less:dev', 'babel:dev', 'webpack:dev']);
-    grunt.registerTask('prod', ['clean', 'jade:dev', 'copy:img2Build', 'copy:fonts2Build', 'less:prod', 'babel:prod', 'webpack:prod']);
+    grunt.registerTask('dev', ['clean', 'jade:dev', 'copy:img2Build', 'copy:fonts2Build', 'less:dev', 'babel:dev', 'copy:templates2Prebuild', 'webpack:dev']);
+    grunt.registerTask('prod', ['clean', 'jade:dev', 'copy:img2Build', 'copy:fonts2Build', 'less:prod', 'babel:prod', 'copy:templates2Prebuild', 'webpack:prod']);
 };
