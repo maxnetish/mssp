@@ -36,7 +36,7 @@ fetch('https://api.github.com/users/maxnetish', {
     })
     .then(function (viewModelReposnse) {
         let html = cardTemplate(viewModelReposnse);
-        let elm = document.getElementById('github-card')
+        let elm = document.getElementById('github-card');
         elm.innerHTML = html;
         return viewModelReposnse;
     })

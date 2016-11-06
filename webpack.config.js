@@ -7,7 +7,7 @@ module.exports = {
     cache: true,
     entry: {
         webapp: './' + preBuildDir + '/client.js',
-        vendor: ['core-js/es6/promise', 'whatwg-fetch', 'pug-runtime', 'urijs']
+        vendor: ['core-js/es6/promise', 'core-js/es6/map', 'whatwg-fetch', 'pug-runtime', 'urijs']
         // jquery: "./app/jquery",
         // bootstrap: ["!bootstrap-webpack!./app/bootstrap/bootstrap.config.js", "./app/bootstrap"],
         // react: "./app/react"

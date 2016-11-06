@@ -4,6 +4,7 @@
 @import 'icomoon.less';
 @import 'main-variables.less';
 @import 'github-card/github-card.less';
+@import 'footer-widget/footer-widget';
 
 html {
   overflow-x: hidden;
@@ -29,6 +30,15 @@ body {
   width: 80%;
   max-width: 1500px;
   min-width: @mssp_wpoint-2;
+
+  &.flex-ct {
+    display: flex;
+    flex-wrap: nowrap;
+
+    @media only screen and (max-width: @mssp_wpoint-1), only screen and (max-device-width: @mssp_wpoint-1) {
+      flex-wrap: wrap;
+    }
+  }
 }
 
 .main-wrapper {
@@ -83,28 +93,27 @@ ul.unstyled {
   padding: @mssp_base_margin;
 }
 
+.page-footer {
+  background-color: @mssp_header_bg_color;
+}
+
 .page-content {
+  // We use flex layout so remove floats
 
   .sidebar {
     background-color: @mssp_aside_bg_color;
     color: @mssp_aside_text_color;
 
     @media only screen and (max-width: @mssp_wpoint-1), only screen and (max-device-width: @mssp_wpoint-1) {
-      float: none;
       width: 100%;
     }
-    float: left;
-    //width: @mssp_sidebar_w + 2 * @mssp_base_margin;
     width: 36%;
   }
 
   .main-content {
     @media only screen and (max-width: @mssp_wpoint-1), only screen and (max-device-width: @mssp_wpoint-1) {
-      float: none;
       width: 100%;
     }
-    float: left;
-    //width: calc(~"100% - "(@mssp_sidebar_w + 2 * @mssp_base_margin));
     width: 64%;
   }
 }
@@ -165,5 +174,9 @@ a {
     width: 100%;
     align-self: center;
   }
+}
+
+.twitter-follow-button {
+  margin: 0 10px;
 }
 

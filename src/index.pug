@@ -27,12 +27,10 @@ html
                             srcset=headerImage.srcSet
                             )
             div.clear.body-row.page-content
-                div.clear.body-row-content
+                div.body-row-content.flex-ct
                     section.main-content
-                        each articleModel in articles
-                            article
-                                h3 #{articleModel.title}
-                                div!= articleModel.content
+                        include articles/article-0
+                        include articles/article-1
                     aside.sidebar
                         div.sidebar-content
                             ul.unstyled
@@ -52,7 +50,10 @@ html
                                                     div.soc-ct
                                                         a(href=soc.href)
                                                             span!= soc.label
+                                                        span!= soc.sublabel
             footer.clear.body-row.page-footer
+                div.body-row-content
+                    div#footer-widget.footer-widget-ct
         script(src=vendorJsSrc)
         script(src=webappJsSrc)
 
