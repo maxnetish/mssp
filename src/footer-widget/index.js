@@ -2,7 +2,7 @@ const targetId = 'footer-widget';
 const itemsClassName = 'footer-widget-item';
 const maxItemsLen = 64;
 const template = require('./footer-widget.tpl.pug');
-const timeBetweenElements = 150;
+const timeBetweenElements = 500;
 
 function updateWidget() {
     let rndNum = Math.random();

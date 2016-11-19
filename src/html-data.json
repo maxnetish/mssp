@@ -1,11 +1,8 @@
 {
-  "pageTitle": "Title of my beautiful little tube page",
+  "pageTitle": "Maksim Gordeev",
   "pageCssSrc": "assets/css/bundle.css",
-  "pageBodyText": "Here is body",
   "vendorJsSrc": "assets/js/vendor.bundle.js",
   "webappJsSrc": "assets/js/webapp.bundle.js",
-  "headerTitle": "Душа моя озарена неземной радостью",
-  "headerSubtitle": "Я совсем один и блаженствую в здешнем краю, словно созданном для таких, как я. Я так счастлив, мой друг, так упоен ощущением покоя, что искусство мое страдает от этого. Ни одного штриха не мог бы я сделать, а никогда не был таким большим художником, как в эти минуты.",
   "headerImage": {
     "src": "assets/img/P277_x1-min.png",
     "srcSet": "assets/img/P277_x2-min.png 2x, assets/img/P277_x3-min.png 3x"
@@ -13,6 +10,11 @@
   "social": {
     "title": "Профили в разных местах",
     "items": [
+      {
+        "icon": "icon-linkedin",
+        "href": "https://ru.linkedin.com/in/maksim-gordeev-8b44a834",
+        "label": "Social network and online platform for professionals"
+      },
       {
         "icon": "icon-twitter",
         "href": "https://twitter.com/maxnetish",

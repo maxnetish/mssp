@@ -12,7 +12,7 @@ html {
 
 body {
   font-family: @mssp_base_font;
-  background-color: @mssp_body_bg_color;
+  background-color: @mssp_header_bg_color;
   color: @mssp_body_text_color;
 }
 
@@ -66,7 +66,7 @@ ul.unstyled {
 }
 
 .page-header {
-  background-color: @mssp_header_bg_color;
+  //background-color: @mssp_header_bg_color;
 
   .pane {
     @media only screen and (max-width: @mssp_wpoint-1), only screen and (max-device-width: @mssp_wpoint-1) {
@@ -87,6 +87,14 @@ ul.unstyled {
       width: @mssp_header_img_w + 2 * @mssp_base_margin;
     }
   }
+
+  .mini-bage {
+    border: solid 1px lighten(@mssp_header_title_text_color, 33%);
+    border-radius: 0.25em;
+    padding: 0 0.25em;
+    background-color: lighten(@mssp_header_title_text_color, 33%);
+    color: @mssp_header_bg_color;
+  }
 }
 
 .header-titles-ct {
@@ -94,11 +102,12 @@ ul.unstyled {
 }
 
 .page-footer {
-  background-color: @mssp_header_bg_color;
+  //background-color: @mssp_header_bg_color;
 }
 
 .page-content {
   // We use flex layout so remove floats
+  background-color: @mssp_body_bg_color;
 
   .sidebar {
     background-color: @mssp_aside_bg_color;

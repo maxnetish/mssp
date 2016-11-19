@@ -4,4 +4,5 @@ const FetchPolyfill = require('whatwg-fetch');
 
 require('./github-card');
 require('./footer-widget');
+require('./greeting');
 
