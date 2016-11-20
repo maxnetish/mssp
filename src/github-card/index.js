@@ -12,9 +12,9 @@ fetch('https://api.github.com/users/maxnetish', {
     .then(function (userResponse) {
         return userResponse.json();
     })
-    .then(function (userParsedresponse) {
-        viewModel.user = userParsedresponse;
-        let nextUri = URI(userParsedresponse.repos_url).addQuery({
+    .then(function (userParsedResponse) {
+        viewModel.user = userParsedResponse;
+        let nextUri = URI(userParsedResponse.repos_url).addQuery({
             page: 1,
             per_page: 5,
             type: 'all',
