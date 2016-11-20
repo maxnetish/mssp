@@ -1,15 +1,10 @@
 doctype html
 html
     head
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
         meta(charset='UTF-8')
-        link(
-        rel='stylesheet',
-        href=pageCssSrc
-        )
-        link(
-        href='//fonts.googleapis.com/css?family=Fira+Sans&subset=latin,cyrillic',
-        rel='stylesheet'
-        )
+        link(rel='stylesheet', href=pageCssSrc)
+        link(href='//fonts.googleapis.com/css?family=Fira+Sans&subset=latin,cyrillic', rel='stylesheet')
         title #{pageTitle}
     body
         div.main-wrapper
@@ -44,6 +39,8 @@ html
                     section.main-content
                         include articles/article-0
                         include articles/article-1
+                        div(style="text-align:center")
+                            img(style="width:100px", src="assets/img/idontknow.png")
                     aside.sidebar
                         div.sidebar-content
                             ul.unstyled
