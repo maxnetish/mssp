@@ -23,6 +23,11 @@ body {
 .body-row-content {
   margin: auto;
 
+  // to grow with cintainer
+  .page-content & {
+    flex-grow: 1;
+  }
+
   @media only screen and (max-width: @mssp_wpoint-2), only screen and (max-device-width: @mssp_wpoint-2) {
     width: 100%;
     min-width: inherit;
@@ -43,6 +48,11 @@ body {
 
 .main-wrapper {
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  // ie likes height
+  //height: 0px;
 }
 
 .clear:after {
@@ -103,11 +113,20 @@ ul.unstyled {
 
 .page-footer {
   //background-color: @mssp_header_bg_color;
+  // ie likes z-index
+  //z-index: 10;
 }
 
 .page-content {
   // We use flex layout so remove floats
   background-color: @mssp_body_bg_color;
+
+  // to grow vertically
+  flex-grow: 1;
+
+  // to grow children elements
+  display: flex;
+  flex-direction: column;
 
   .sidebar {
     background-color: @mssp_aside_bg_color;

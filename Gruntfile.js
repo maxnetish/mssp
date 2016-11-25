@@ -165,7 +165,10 @@ module.exports = function (grunt) {
                     sourceMap: true,
                     outputSourceFiles: true,
                     plugins: [
-                        new (require('less-plugin-npm-import'))
+                        new (require('less-plugin-npm-import')),
+                        new (require('less-plugin-autoprefix'))({
+                            browsers: ['last 2 versions']
+                        })
                     ]
                 }
             },
@@ -177,7 +180,10 @@ module.exports = function (grunt) {
                 options: {
                     sourceMap: false,
                     plugins: [
-                        new (require('less-plugin-npm-import'))
+                        new (require('less-plugin-npm-import')),
+                        new (require('less-plugin-autoprefix'))({
+                            browsers: ['last 2 versions']
+                        })
                     ]
                 }
             }
