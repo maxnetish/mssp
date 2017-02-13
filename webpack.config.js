@@ -34,7 +34,7 @@ module.exports = {
             },
             {
                 test: /(\.tpl.jade|\.tpl.pug)$/,
-                loader: 'pug-loader?compileDebug=false&prettyr=false'
+                loader: 'pug-loader?compileDebug=false&pretty=false'
             }
 
             // // required to write "require('./style.css')"
